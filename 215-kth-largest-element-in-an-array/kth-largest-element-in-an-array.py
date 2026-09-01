@@ -8,9 +8,10 @@ class Solution(object):
         
         # Process the remaining elements
         for i in range(k, len(nums)):
-            if nums[i] > min_heap[0]:
-                heapq.heappop(min_heap)
-                heapq.heappush(min_heap, nums[i])
+            if nums[i] < min_heap[0]:
+                continue
+            heapq.heappop(min_heap)
+            heapq.heappush(min_heap, nums[i])
                 
         # The root of the min-heap is the kth largest element
         return min_heap[0]
