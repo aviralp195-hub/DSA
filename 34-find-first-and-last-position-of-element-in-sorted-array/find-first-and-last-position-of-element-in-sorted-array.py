@@ -1,64 +1,62 @@
 class Solution(object):
     def searchRange(self, nums, target):
-        n = len(nums)
+        i = 0 
 
-        low = 0 
-        start = -1
-        end = -1
+        j = len(nums) - 1
 
-       
+        res = [-1, -1]
 
-        high = n-1
-        while low<=high:
+        while i <= j:
 
+            mid = (i + j) // 2
 
-            guess = (low + high)//2
+            if nums[mid] == target:
 
-            if nums[guess] > target:
+                res[0] = mid 
 
-                high = guess - 1
+                j = mid - 1
 
-            
+                
 
-            elif nums[guess] < target:
+                   
 
-                low = guess + 1
+            elif nums[mid] < target:
 
-            else:
-                start =guess
+                i = mid + 1
+                
+            else :
 
-                high = guess - 1
+                j = mid - 1
+        i = 0 
 
-                n = len(nums)
+        j = len(nums) - 1
 
-        low = 0 
+        
 
-       
+        while i <= j:
 
-        high = n-1
-        while low<=high:
+            mid = (i + j) // 2
 
+            if nums[mid] == target:
 
-            guess = (low + high)//2
+                res[1] = mid 
 
-            if nums[guess] > target:
+                i = mid + 1
 
-                high = guess - 1
+                
 
-            
+                   
 
-            elif nums[guess] < target:
+            elif nums[mid] < target:
 
-                low = guess + 1
+                i = mid + 1
+                
+            else :
 
-            else:
+                j = mid - 1
+        return res
 
-                end = guess
-
-                low = guess + 1
-
-            
-        return  [start , end]
+        
            
 
 
